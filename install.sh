@@ -5,7 +5,6 @@ yarn global add pm2
 git clone https://ghproxy.com/https://github.com/elecV2/elecV2P.git
 cd elecV2P
 yarn
-yarn start
 
 cd ~
 wget -N "https://ghproxy.com/https://github.com/syd1989/v2/blob/main/v2p.sh"
