@@ -7,9 +7,9 @@ yum install wget nodejs yarn -y || apt install wget nodejs yarn -y
 fi
 npm install -g pm2
 yarn global add pm2
-last_version=$(curl -s https://ghproxy.com/https://github.com/elecV2/elecV2P/tags | grep -o "/tag/.*" | cut -c 6- | cut -d '"' -f1 | sed -n 1p)
+last_version=$(curl -s https://git.taiko.workers.dev/https://github.com/elecV2/elecV2P/tags | grep -o "/tag/.*" | cut -c 6- | cut -d '"' -f1 | sed -n 1p)
 rm -rf $last_version.tar.gz
-wget https://ghproxy.com/https://github.com/elecV2/elecV2P/archive/refs/tags/$last_version.tar.gz
+wget https://git.taiko.workers.dev/https://github.com/elecV2/elecV2P/archive/refs/tags/$last_version.tar.gz
 if [ ! -d elecV2P ]
 then mkdir elecV2P
 cz=安装
