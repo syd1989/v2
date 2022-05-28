@@ -1,0 +1,1 @@
+cd ~/jdlite-server &&   node main.js
