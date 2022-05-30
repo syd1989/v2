@@ -1,1 +1,1 @@
-cd ~/jinli &&   node main.js
+cd ~/jinli &&   node main2.js
