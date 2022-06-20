@@ -1,5 +1,5 @@
 pkg install vim curl wget git unzip unrar
-pkg  nodejs
+pkg install nodejs
 npm install
 
 git clone https://gh.fakev.cn/syd1989/jinli.git
