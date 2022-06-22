@@ -23,6 +23,15 @@ let jj = {
   email: "syd1989",
   pwd: "myqq19890926",
 };
+/*
+1.好家伙机场，需要付费套餐激活
+付费 便宜3.99 50g  流量每隔31天重置 签到每天1g-4g随机 可看NF 速度快 提供小火箭下载账号 
+注册地址:haojiahuo.live/auth/register?code=FErc
+*/
+let hjh = {
+  email: "",
+  pwd: "",
+};
 
 const $ = new Env("机场签到");
 const notify = $.isNode() ? require("./sendNotify") : "";
