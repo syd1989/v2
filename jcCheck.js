@@ -1,8 +1,6 @@
 /*
 corn 0 2 * * *
 new Env("机场签到")
-*/
-
 2.ikuuu机场
 注册地址:https://ikuuu.co/auth/register?code=Hg2Y
 白嫖版 注册送50g 签到每天1g以内 随机 速度还行
@@ -49,10 +47,10 @@ const notify = $.isNode() ? require("./sendNotify") : "";
     await login("iku", "https://ikuuu.co/auth/login", iku);
   }
 
-  if (yy.email == "" && yy.pwd == "") {
-    console.log("优云邮箱密码为空,跳过执行\n\n");
+  if (jj.email == "" && jj.pwd == "") {
+    console.log("几鸡邮箱密码为空,跳过执行\n\n");
   } else {
-    await login("优云", "https://youyun777.net/auth/login", yy);
+    await login("几鸡", "https://b.luxury/signin", jj);
   }
 })()
   .catch((e) => {
@@ -92,7 +90,7 @@ function login(name, url, raw, timeout = 0) {
               checkurl = "https://haojiahuo.live/user/checkin";
             } else if (name == "iku") {
               checkurl = "https://ikuuu.co/user/checkin";
-            } else if (name == "优云") {
+            } else if (name == "几鸡") {
               checkurl = "https://youyun777.net/user/checkin";
             }
             await check(name, checkurl, cookie);
@@ -137,7 +135,7 @@ function check(name, checkurl, cookie) {
               data.trafficInfo["unUsedTraffic"];
           } else if (name == "iku") {
             msg = `${name}签到成功` + data.msg;
-          } else if (name == "优云") {
+          } else if (name == "几鸡") {
             msg =
               `${name}签到成功` + data.msg + "您的当前流量为" + data.Unused_Traffic;
           }
