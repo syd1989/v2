@@ -18,10 +18,6 @@ let userCookie = ($.isNode() ? process.env[ckName] : $.getdata(ckName)) || '';
 
 let userList = []
 let userIdx=0
-
-
-
-
 let userCount = 0
 
 ///////////////////////////////////////////////////////////////////
@@ -59,7 +55,7 @@ if(result.result.alipay){
 var x='已绑定'
 this.my=1
 }
-           console.log(`\n用户 ${this.nickname} 余额${this.money} 支付宝${x}`)
+           console.log(`用户 ${this.nickname} 余额${this.money} 支付宝${x}`)
         } catch (e) {
             console.log(e)
         } finally {
@@ -87,10 +83,10 @@ let urlObject = popu(url, h,body)
 			await httpRequest('post',urlObject )   
               let result = httpResult;
 
-result.data==0&&console.log(`\n用户 ${this.nickname} 已领取,等待下次分红`)
+result.data==0&&console.log(`用户 ${this.nickname} 今天已经领取了`)
 if(this.money>=0.2&&this.my==1&&this.cashnum>0){
 await this.cash()
-}else console.log(`\n用户 ${this.nickname} 你今天还可以提现 ${this.cashnum} 次\n\n用户 ${this.nickname} 你的余额不足或者没绑定支付宝 跳过提现`)
+}else console.log(`用户 ${this.nickname} 你今天还可以提现 ${this.cashnum} 次\n用户 ${this.nickname} 你的余额不足或者没绑定支付宝 跳过提现`)
         } catch (e) {
             console.log(e)
         } finally {
@@ -112,8 +108,8 @@ let h={
 let urlObject = popu(url, h,body)
 			await httpRequest('post',urlObject )   
               let result = httpResult;
-result.data==0&&console.log(`\n用户 ${this.nickname} 你没绑定支付宝怎么提现？`)
-result.data==1&&console.log(`\n用户 ${this.nickname} 提现成功了 具体到账没有请打开支付宝查看吧！`)
+result.data==0&&console.log(`用户 ${this.nickname} 你没绑定支付宝怎么提现？`)
+result.data==1&&console.log(`用户 ${this.nickname} 提现成功了 具体到账没有请打开支付宝查看吧！`)
 
         } catch (e) {
             console.log(e)
@@ -123,31 +119,7 @@ result.data==1&&console.log(`\n用户 ${this.nickname} 提现成功了 具体到
     }
 
 
-        async getmylist2() {
-        try {
-            let  url = `http://www.ieddoq.cn/order/getmylist2`;
-             let body = `{"unionid":"${this.u}","page":1,"salltype":0}`;
 
-let h={
-  "unionid": this.u,
-  "token": this.t,
-  "Content-Type": "application/json"
-}
- 
-let urlObject = popu(url, h,body)
-			await httpRequest('post',urlObject )   
-              let result = httpResult;
-let ssrtime=result.result.result[0].startime
-let addtime=Format_time(ssrtime)
-console.log(`\n用户 ${this.nickname} ：分红时间是`+addtime)
-await this.getuseinfo()
-await this.addmoney()
-        } catch (e) {
-            console.log(e)
-        } finally {
-            return Promise.resolve(1);
-        }
-    }
 
 }
 
@@ -173,7 +145,7 @@ if (userList.length >  0) {
             console.log('\n------- 分红和提现 -------\n')
             taskall = []
             for (let user of userList) {
-                taskall.push(user.getmylist2())
+                taskall.push(user.addmoney())
             }
             await Promise.all(taskall)
             
@@ -187,7 +159,7 @@ if (userList.length >  0) {
 async function GetRewrite() {
 
 }
-function Format_time(t){var e,n=new Date(t),g=n.getFullYear()+"-",o=(n.getMonth()+1<10?"0"+(n.getMonth()+1):n.getMonth()+1)+"-",u=n.getDate()+" ",r=n.getHours()+":",M=(10>n.getMinutes()?"0"+n.getMinutes():n.getMinutes())+":";return g+o+u+r+M+n.getSeconds()}
+
 
 async function checkEnv() {
     if (userCookie) {
