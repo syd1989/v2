@@ -1,4 +1,4 @@
-import requests, re, json, urllib3
+import requests, re, json, urllib3, os
 
 #os.environ 获取环境变量
 ck =os.environ["zkck"].split('&')
