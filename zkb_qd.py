@@ -5,8 +5,6 @@ ck =os.environ["zkck"].split('&')
 #split()：拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list）
 cookie=[ck[0]]
 #print(mycookies)
-
-#推送配置
 # 企业微信推送参数
 corpid = ''
 agentid = ''
@@ -34,16 +32,17 @@ def Push(contents):
 urllib3.disable_warnings()
 for i in range(len(cookie)):
     print('开始第'+ str(i+1) +'个帐号签到'+'\n'+'***********************')
+    s = requests.session()
     f_url = 'https://v1.xianbao.net/'  # 获取formhash
     url = 'https://v1.xianbao.net/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0'
     headers = {
-        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1',
+        'user-agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
         'cookie': f'{cookie[i]}',
         'Host': 'v1.xianbao.net',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Origin': 'https://v1.xianbao.net'
     }
-    f_html = requests.post(url=f_url, headers=headers, verify=False).text
+    f_html = s.get(url=f_url, headers=headers, verify=False,allow_redirects=False).text
     formhash = str(re.findall('name="formhash" value="(.*?)" />', f_html, re.S)).replace('[', '').replace('\'', '').replace(']', '')
     data = {
     'formhash': f'{formhash}'
