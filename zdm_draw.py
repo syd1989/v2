@@ -1,4 +1,4 @@
-import requests, re, json, urllib3, os
+import requests, re, json, urllib3, os, demjson
 
 #os.environ 获取环境变量
 ck =os.environ["SMZDM_COOKIE"].split('&')
