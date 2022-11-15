@@ -1,4 +1,12 @@
-import requests, re, json, urllib3, os, demjson
+# cron "35 14 * * *" 
+# new Env('值得买【抽奖】')
+import json
+import re
+import urllib3
+import threading
+import time
+import requests,os
+import datetime
 
 #os.environ 获取环境变量
 ck =os.environ["SMZDM_COOKIE"].split('&')
