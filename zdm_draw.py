@@ -3,7 +3,7 @@ import requests, re, json, urllib3, os
 #os.environ 获取环境变量
 ck =os.environ["SMZDM_COOKIE"].split('&')
 #split()：拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list）
-cookie=[ck[0]]
+cookie_list=[ck[0]]
 
 # 活动id
 active_id = ['ljX8qVlEA7','daY8jaOgOo']
